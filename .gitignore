@@ -1,0 +1,9 @@
+.codelite/*
+.clang/*
+
+client/Debug/*
+client/Release/*
+
+server/*.mk
+client/*.mk
+Makefile
