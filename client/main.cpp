@@ -1,7 +1,13 @@
 #include <stdio.h>
 
+#include "OgreApp.hpp"
+
+using namespace grt;
+
 int main(int argc, char **argv)
 {
-	printf("hello world\n");
-	return 0;
+    OgreApp app;
+    app.run();
+    
+    return 0;
 }
