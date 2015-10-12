@@ -6,10 +6,19 @@
 #include "OgreRenderWindow.h"
 #include "OgreConfigFile.h"
 #include "OgreWindowEventUtilities.h"
+#include "OgreEntity.h"
+
+#include "Nugget.hpp"
+#include "Dollop.hpp"
 
 namespace grt
 {
 
+OgreApp& OgreApp::getSingleton() {
+    static OgreApp instance;
+    return instance;
+}
+    
 OgreApp::OgreApp() {
 }
 
@@ -62,7 +71,7 @@ void OgreApp::run() {
     
     Ogre::SceneNode* headNode = m_smgr->getRootSceneNode()->createChildSceneNode();
     Ogre::Entity* ogreHead = m_smgr->createEntity("Head", "ogrehead.mesh");
-    //headNode->attachObject(ogreHead);
+    headNode->attachObject(ogreHead);
     headNode->setScale(0.2f, 0.2f, 0.2f);
     
     m_smgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
@@ -72,9 +81,13 @@ void OgreApp::run() {
     Ogre::Light* light = m_smgr->createLight("Light");
     light->setPosition(20,80,50);
     
+    Dollop dollop;
+    //dollop.updateMesh();
+    
     while(true) {
         
-        headNode->rotate(Ogre::Vector3(0, 1, 0), Ogre::Radian(1));
+        //headNode->rotate(Ogre::Vector3(0, 1, 0), Ogre::Radian(1));
+        headNode->translate(Ogre::Vector3(0, 0.01, 0));
         
         Ogre::WindowEventUtilities::messagePump();
         

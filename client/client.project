@@ -32,6 +32,10 @@
     <File Name="main.cpp"/>
     <File Name="OgreApp.hpp"/>
     <File Name="OgreApp.cpp"/>
+    <File Name="Dollop.hpp"/>
+    <File Name="Dollop.cpp"/>
+    <File Name="Nugget.hpp"/>
+    <File Name="Nugget.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>
@@ -44,7 +48,7 @@
       <ResourceCompiler Options=""/>
     </GlobalSettings>
     <Configuration Name="Debug" CompilerType="MinGW ( gcc.exe (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 5.1.0 )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
-      <Compiler Options="-g;-O0;-Wall" C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+      <Compiler Options="-g;-O0;-std=c++11" C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
         <IncludePath Value="$(OGRE_SDK)/$(OgreSDKName)/include"/>
         <IncludePath Value="$(OGRE_SDK)/$(OgreSDKName)/include/OGRE"/>

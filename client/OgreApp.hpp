@@ -13,8 +13,10 @@ class OgreApp {
 public:
     OgreApp();
     virtual ~OgreApp();
+public:
+    static OgreApp& getSingleton();
     void run();
-private:
+public:
     Ogre::Root* m_ogreRoot;
     Ogre::Camera* m_cam;
     Ogre::SceneManager* m_smgr;

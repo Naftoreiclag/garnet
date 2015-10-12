@@ -1,12 +1,13 @@
-#include <stdio.h>
+#include <iostream>
 
+#include "Dollop.hpp"
 #include "OgreApp.hpp"
 
 using namespace grt;
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     OgreApp app;
+    //OgreApp& app = OgreApp::getSingleton();
     app.run();
     
     return 0;

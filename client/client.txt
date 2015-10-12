@@ -1,1 +1,1 @@
-./Debug/main.cpp.o ./Debug/OgreApp.cpp.o   
+./Debug/main.cpp.o ./Debug/OgreApp.cpp.o ./Debug/Dollop.cpp.o ./Debug/Nugget.cpp.o   
