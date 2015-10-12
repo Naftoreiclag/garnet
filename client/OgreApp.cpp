@@ -11,6 +11,8 @@
 #include "Nugget.hpp"
 #include "Dollop.hpp"
 
+#include <iostream>
+
 namespace grt
 {
 
@@ -23,7 +25,6 @@ OgreApp::OgreApp() {
 }
 
 OgreApp::~OgreApp() {
-    if(m_ogreRoot) delete m_ogreRoot;
 }
 
 void OgreApp::run() {
@@ -82,7 +83,7 @@ void OgreApp::run() {
     light->setPosition(20,80,50);
     
     Dollop dollop;
-    //dollop.updateMesh();
+    dollop.updateMesh();
     
     while(true) {
         

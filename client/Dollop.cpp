@@ -28,7 +28,7 @@ void Dollop::updateMesh() {
     man->position(-100, -100, -100);
     man->end();
     
-   smgr->getRootSceneNode()->attachObject(man);
+    smgr->getRootSceneNode()->attachObject(man);
     
     
     /*
