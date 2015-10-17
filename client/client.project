@@ -85,29 +85,22 @@ Mingw64Dlls=C:/mingw-w64/x86_64-5.1.0-posix-seh-rt_v4-rev0/mingw64/bin]]>
       <PostBuild>
         <Command Enabled="no"># README</Command>
         <Command Enabled="yes">cp ../README.md $(IntermediateDirectory)</Command>
-        <Command Enabled="yes"/>
         <Command Enabled="no"># BOOST</Command>
         <Command Enabled="yes">cp $(BOOST_HOME)/lib/libboost_date_time-mgw51-mt-d-1_59.dll $(IntermediateDirectory)</Command>
         <Command Enabled="yes">cp $(BOOST_HOME)/lib/libboost_thread-mgw51-mt-d-1_59.dll $(IntermediateDirectory)</Command>
         <Command Enabled="yes">cp $(BOOST_HOME)/lib/libboost_system-mgw51-mt-d-1_59.dll $(IntermediateDirectory)</Command>
         <Command Enabled="yes">cp $(BOOST_HOME)/lib/libboost_chrono-mgw51-mt-d-1_59.dll $(IntermediateDirectory)</Command>
-        <Command Enabled="yes"/>
         <Command Enabled="no"># OGRE</Command>
         <Command Enabled="yes">cp $(OGRE_SDK)/$(OgreSDKName)/bin/Debug/*.dll $(IntermediateDirectory)</Command>
-        <Command Enabled="yes"/>
         <Command Enabled="no"># SDL2</Command>
         <Command Enabled="yes">cp $(SDL2_HOME)/bin/*.dll $(IntermediateDirectory)</Command>
-        <Command Enabled="yes"/>
         <Command Enabled="no"># CONFIG</Command>
         <Command Enabled="yes">cp config/Debug/*.xml $(IntermediateDirectory)</Command>
         <Command Enabled="yes">cp config/Debug/*.cfg $(IntermediateDirectory)</Command>
-        <Command Enabled="yes"/>
         <Command Enabled="no"># Mingw64</Command>
         <Command Enabled="yes">cp $(Mingw64Dlls)/libgcc_s_seh*.dll $(IntermediateDirectory)</Command>
         <Command Enabled="yes">cp $(Mingw64Dlls)/libstdc++*.dll $(IntermediateDirectory)</Command>
         <Command Enabled="yes">cp $(Mingw64Dlls)/libwinpthread*.dll $(IntermediateDirectory)</Command>
-        <Command Enabled="yes"/>
-        <Command Enabled="yes"/>
       </PostBuild>
       <CustomBuild Enabled="no">
         <RebuildCommand/>
