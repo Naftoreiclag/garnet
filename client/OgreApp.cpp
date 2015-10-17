@@ -59,9 +59,14 @@ void OgreApp::run() {
         SDL_GetWindowWMInfo(mSDLWindow, &sdlWindowInfo);
         
         Ogre::NameValuePairList ogreParams;
+        #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
         ogreParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(sdlWindowInfo.info.win.window));
-        
-        m_window = m_ogreRoot->createRenderWindow("Name", 1280, 720, false, &ogreParams);
+        #elif OGRE_PLATFORM == OGRE_PLATFORM_APPLE
+        ogreParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(sdlWindowInfo.info.cocoa.window));
+        #elif OGRE_PLATFORM == OGRE_PLATFORM_LINUX
+        ogreParams["parentWindowHandle"] = Ogre::StringConverter::toString(size_t(sdlWindowInfo.info.x11.window));
+        #endif
+        m_window = m_ogreRoot->createRenderWindow("secret message for uubor haxurs", 1280, 720, false, &ogreParams);
     }
     else {
         return;
