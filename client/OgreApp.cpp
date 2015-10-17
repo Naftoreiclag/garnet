@@ -8,6 +8,9 @@
 #include "OgreWindowEventUtilities.h"
 #include "OgreEntity.h"
 
+#include "SDL.h"
+#include "SDL_syswm.h"
+
 #include "Nugget.hpp"
 #include "Dollop.hpp"
 
@@ -48,7 +51,17 @@ void OgreApp::run() {
     
     if(m_ogreRoot->restoreConfig() || m_ogreRoot->showConfigDialog()) {
         m_ogreRoot->initialise(false);
-        m_window = m_ogreRoot->createRenderWindow("Name", 1280, 720, false);
+
+        SDL_Window* mSDLWindow = SDL_CreateWindow("SDL Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_RESIZABLE);
+
+        SDL_SysWMinfo sdlWindowInfo;
+        SDL_VERSION(&sdlWindowInfo.version);
+        SDL_GetWindowWMInfo(mSDLWindow, &sdlWindowInfo);
+        
+        Ogre::NameValuePairList ogreParams;
+        ogreParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(sdlWindowInfo.info.win.window));
+        
+        m_window = m_ogreRoot->createRenderWindow("Name", 1280, 720, false, &ogreParams);
     }
     else {
         return;
