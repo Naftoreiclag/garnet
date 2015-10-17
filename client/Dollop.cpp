@@ -19,7 +19,7 @@ Dollop::~Dollop()
 }
 
 void Dollop::updateMesh() {
-    Ogre::SceneManager* smgr = OgreApp::getSingleton().m_smgr;
+    Ogre::SceneManager* smgr = OgreApp::getSingleton().mSmgr;
     Ogre::ManualObject* man = smgr->createManualObject("manual obj");
     
     man->begin("BaseWhiteNoLighting", Ogre::RenderOperation::OT_LINE_LIST);

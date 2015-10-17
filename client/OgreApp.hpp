@@ -6,6 +6,8 @@
 #include "OgreSceneManager.h"
 #include "OgreRenderWindow.h"
 
+#include "SDL_syswm.h"
+
 namespace grt
 {
 
@@ -17,10 +19,11 @@ public:
     static OgreApp& getSingleton();
     void run();
 public:
-    Ogre::Root* m_ogreRoot;
-    Ogre::Camera* m_cam;
-    Ogre::SceneManager* m_smgr;
-    Ogre::RenderWindow* m_window;
+    Ogre::Root* mOgreRoot;
+    Ogre::Camera* mCam;
+    Ogre::SceneManager* mSmgr;
+    Ogre::RenderWindow* mOgreWindow;
+    SDL_Window* mSdlWindow;
 
 };
 
