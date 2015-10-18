@@ -1,21 +1,12 @@
 #include "OgreApp.hpp"
 
-#include "OgreRoot.h"
-#include "OgreCamera.h"
-#include "OgreSceneManager.h"
 #include "OgreRenderWindow.h"
 #include "OgreConfigFile.h"
 #include "OgreWindowEventUtilities.h"
-#include "OgreEntity.h"
 
 #include "SDL.h"
 
-#include "Nugget.hpp"
-#include "Dollop.hpp"
-
 #include "GarnetApp.hpp"
-
-#include <iostream>
 
 namespace grt
 {
@@ -33,21 +24,6 @@ OgreApp::~OgreApp() {
 
 void OgreApp::run() {
     mOgreRoot = new Ogre::Root("plugins.cfg");
-    
-    {
-        Ogre::ConfigFile resCfg;
-        resCfg.load("resources.cfg");
-        Ogre::ConfigFile::SectionIterator sectionIterator = resCfg.getSectionIterator();
-        
-        while(sectionIterator.hasMoreElements()) {
-            Ogre::String sectionName = sectionIterator.peekNextKey();
-            Ogre::ConfigFile::SettingsMultiMap* sectionData = sectionIterator.getNext();
-            Ogre::ConfigFile::SettingsMultiMap::iterator dataIterator;
-            for(dataIterator = sectionData->begin(); dataIterator != sectionData->end(); ++ dataIterator) {
-                Ogre::ResourceGroupManager::getSingleton().addResourceLocation(dataIterator->second, dataIterator->first, sectionName);
-            }
-        }
-    }
     
     if(mOgreRoot->restoreConfig() || mOgreRoot->showConfigDialog()) {
         mOgreRoot->initialise(false);
@@ -72,6 +48,21 @@ void OgreApp::run() {
         return;
     }
     
+    {
+        Ogre::ConfigFile resCfg;
+        resCfg.load("resources.cfg");
+        Ogre::ConfigFile::SectionIterator sectionIterator = resCfg.getSectionIterator();
+        
+        while(sectionIterator.hasMoreElements()) {
+            Ogre::String sectionName = sectionIterator.peekNextKey();
+            Ogre::ConfigFile::SettingsMultiMap* sectionData = sectionIterator.getNext();
+            Ogre::ConfigFile::SettingsMultiMap::iterator dataIterator;
+            for(dataIterator = sectionData->begin(); dataIterator != sectionData->end(); ++ dataIterator) {
+                Ogre::ResourceGroupManager::getSingleton().addResourceLocation(dataIterator->second, dataIterator->first, sectionName);
+            }
+        }
+    }
+    
     SDL_ShowCursor(SDL_FALSE);
     SDL_SetWindowGrab(mSdlWindow, SDL_TRUE);
     
@@ -93,6 +84,17 @@ void OgreApp::run() {
                     running = false;
                     break;
                 }
+                case SDL_KEYDOWN: {
+                    // Do not listen to when the key is being rapid-fire pressed
+                    if(!event.key.repeat) {
+                        garnetApp.onKeyPress(event.key);
+                    }
+                    break;
+                }
+                case SDL_KEYUP: {
+                    garnetApp.onKeyRelease(event.key);
+                    break;
+                }
                 default : {
                     break;
                 }
@@ -100,9 +102,6 @@ void OgreApp::run() {
         }
         
         garnetApp.onTick();
-        
-        //headNode->rotate(Ogre::Vector3(0, 1, 0), Ogre::Radian(1));
-        //headNode->translate(Ogre::Vector3(0, 0.01, 0));
         
         Ogre::WindowEventUtilities::messagePump();
         

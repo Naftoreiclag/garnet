@@ -1,6 +1,12 @@
 #include "GarnetApp.hpp"
 
+#include <iostream>
+
 #include "OgreEntity.h"
+
+#include "SDL.h"
+
+
 
 namespace grt
 {
@@ -50,5 +56,12 @@ void GarnetApp::onClose() {
 void GarnetApp::onTick() {
 }
 
+
+void GarnetApp::onKeyPress(const SDL_KeyboardEvent& event) {
+    
+}
+void GarnetApp::onKeyRelease(const SDL_KeyboardEvent& event) {
+    std::cout << "Key released" << std::endl;
+}
 }
 
