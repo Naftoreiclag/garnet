@@ -63,5 +63,14 @@ void GarnetApp::onKeyPress(const SDL_KeyboardEvent& event) {
 void GarnetApp::onKeyRelease(const SDL_KeyboardEvent& event) {
     std::cout << "Key released" << std::endl;
 }
+void GarnetApp::onMouseMove(const SDL_MouseMotionEvent& event) {
+    std::cout << "Mouse move" << std::endl;
+    
+}
+void GarnetApp::onMousePress(const SDL_MouseButtonEvent& event) {
+}
+void GarnetApp::onMouseRelease(const SDL_MouseButtonEvent& event) {
+    
+}
 }
 

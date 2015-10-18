@@ -95,6 +95,18 @@ void OgreApp::run() {
                     garnetApp.onKeyRelease(event.key);
                     break;
                 }
+                case SDL_MOUSEMOTION: {
+                    garnetApp.onMouseMove(event.motion);
+                    break;
+                }
+                case SDL_MOUSEBUTTONDOWN: {
+                    garnetApp.onMousePress(event.button);
+                    break;
+                }
+                case SDL_MOUSEBUTTONUP: {
+                    garnetApp.onMouseRelease(event.button);
+                    break;
+                }
                 default : {
                     break;
                 }
