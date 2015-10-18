@@ -26,7 +26,7 @@ public:
     void onClose();
     
     // Ticks
-    void onTick();
+    void onTick(float tps);
     
     // Key handling
     void onKeyPress(const SDL_KeyboardEvent& event);

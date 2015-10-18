@@ -53,19 +53,36 @@ void GarnetApp::initialize(Ogre::Root* ogreRoot, Ogre::RenderWindow* ogreWindow)
 
 void GarnetApp::onClose() {
 }
-void GarnetApp::onTick() {
+void GarnetApp::onTick(float tps) {
+    std::cout << tps << std::endl;
 }
 
 
 void GarnetApp::onKeyPress(const SDL_KeyboardEvent& event) {
+    switch(event.keysym.sym) {
+        case SDLK_w: {
+            break;
+        }
+        case SDLK_a: {
+            break;
+        }
+        case SDLK_s: {
+            break;
+        }
+        case SDLK_d: {
+            break;
+        }
+        default: {
+            break;
+        }
+    }
     
 }
 void GarnetApp::onKeyRelease(const SDL_KeyboardEvent& event) {
     std::cout << "Key released" << std::endl;
 }
 void GarnetApp::onMouseMove(const SDL_MouseMotionEvent& event) {
-    std::cout << "Mouse move" << std::endl;
-    
+    std::cout << "Mouse move " << event.xrel << "\t" << event.yrel << std::endl;
 }
 void GarnetApp::onMousePress(const SDL_MouseButtonEvent& event) {
 }

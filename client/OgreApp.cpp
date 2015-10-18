@@ -6,6 +6,8 @@
 
 #include "SDL.h"
 
+#include "SFML/System.hpp"
+
 #include "GarnetApp.hpp"
 
 namespace grt
@@ -72,6 +74,8 @@ void OgreApp::run() {
     GarnetApp& garnetApp = GarnetApp::getSingleton();
     garnetApp.initialize(mOgreRoot, mOgreWindow);
     
+    sf::Clock tpsTimer;
+    
     bool running = true;
     while(running) {
         
@@ -113,7 +117,10 @@ void OgreApp::run() {
             }
         }
         
-        garnetApp.onTick();
+        float tps = tpsTimer.getElapsedTime().asSeconds();
+        tpsTimer.restart();
+        
+        garnetApp.onTick(tps);
         
         Ogre::WindowEventUtilities::messagePump();
         
