@@ -36,6 +36,8 @@
     <File Name="Dollop.cpp"/>
     <File Name="Nugget.hpp"/>
     <File Name="Nugget.cpp"/>
+    <File Name="GarnetApp.hpp"/>
+    <File Name="GarnetApp.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

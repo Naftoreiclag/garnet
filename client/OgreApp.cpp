@@ -32,7 +32,6 @@ OgreApp::~OgreApp() {
 void OgreApp::run() {
     mOgreRoot = new Ogre::Root("plugins.cfg");
     
-    // Load resource config
     {
         Ogre::ConfigFile resCfg;
         resCfg.load("resources.cfg");
@@ -71,6 +70,9 @@ void OgreApp::run() {
         return;
     }
     
+    SDL_ShowCursor(SDL_FALSE);
+    SDL_SetWindowGrab(mSdlWindow, SDL_TRUE);
+    
     mSmgr = mOgreRoot->createSceneManager(Ogre::ST_GENERIC);
     
     mCam = mSmgr->createCamera("Camera");
@@ -102,16 +104,27 @@ void OgreApp::run() {
     Dollop dollop;
     dollop.updateMesh();
     
-    while(true) {
+    bool running = true;
+    while(running) {
+        
+        SDL_Event event;
+        while(SDL_PollEvent(&event)) {
+            switch(event.type) {
+                case SDL_QUIT: {
+                    mOgreRoot->queueEndRendering();
+                    running = false;
+                    break;
+                }
+                default : {
+                    break;
+                }
+            }
+        }
         
         //headNode->rotate(Ogre::Vector3(0, 1, 0), Ogre::Radian(1));
         headNode->translate(Ogre::Vector3(0, 0.01, 0));
         
         Ogre::WindowEventUtilities::messagePump();
-        
-        if(mOgreWindow->isClosed()) {
-            break;
-        }
         
         if(!mOgreRoot->renderOneFrame()) {
             break;

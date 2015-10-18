@@ -1,6 +1,5 @@
 #include <iostream>
 
-#include "Dollop.hpp"
 #include "OgreApp.hpp"
 
 using namespace grt;
