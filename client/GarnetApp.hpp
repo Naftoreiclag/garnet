@@ -4,6 +4,7 @@
 #include "OgreRoot.h"
 #include "OgreCamera.h"
 #include "OgreSceneManager.h"
+#include "OgreRenderWindow.h"
 
 namespace grt
 {
@@ -19,7 +20,7 @@ public:
     Ogre::Camera* mCam;
     Ogre::SceneManager* mSmgr;
     
-    void initialize(Ogre::Root* mOgreRoot);
+    void initialize(Ogre::Root* ogreRoot, Ogre::RenderWindow* ogreWindow);
     void onClose();
     void onTick();
     

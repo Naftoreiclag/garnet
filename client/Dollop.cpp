@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <iostream>
 
-#include "OgreApp.hpp"
+#include "GarnetApp.hpp"
 
 namespace grt
 {
@@ -19,7 +19,7 @@ Dollop::~Dollop()
 }
 
 void Dollop::updateMesh() {
-    Ogre::SceneManager* smgr = OgreApp::getSingleton().mSmgr;
+    Ogre::SceneManager* smgr = GarnetApp::getSingleton().mSmgr;
     Ogre::ManualObject* man = smgr->createManualObject("manual obj");
     
     man->begin("BaseWhiteNoLighting", Ogre::RenderOperation::OT_LINE_LIST);

@@ -75,36 +75,11 @@ void OgreApp::run() {
     SDL_ShowCursor(SDL_FALSE);
     SDL_SetWindowGrab(mSdlWindow, SDL_TRUE);
     
-    mSmgr = mOgreRoot->createSceneManager(Ogre::ST_GENERIC);
-    
-    mCam = mSmgr->createCamera("Camera");
-    
-    mCam->setPosition(Ogre::Vector3(0, 0, 80));
-    mCam->lookAt(Ogre::Vector3(0, 0, -300));
-    mCam->setNearClipDistance(5);
-    
-    Ogre::Viewport* viewport = mOgreWindow->addViewport(mCam);
-    viewport->setBackgroundColour(Ogre::ColourValue(0, 0, 0));
-    
-    mCam->setAspectRatio(Ogre::Real(viewport->getActualWidth()) / Ogre::Real(viewport->getActualHeight()));
-    
     Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
     
-    Ogre::SceneNode* headNode = mSmgr->getRootSceneNode()->createChildSceneNode();
-    Ogre::Entity* ogreHead = mSmgr->createEntity("Head", "ogrehead.mesh");
-    headNode->attachObject(ogreHead);
-    headNode->setScale(0.2f, 0.2f, 0.2f);
-    
-    mSmgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
-    
-    mSmgr->setSkyBox(true, "Test");
-    
-    Ogre::Light* light = mSmgr->createLight("Light");
-    light->setPosition(20,80,50);
-    
     GarnetApp& garnetApp = GarnetApp::getSingleton();
-    garnetApp.initialize(mOgreRoot);
+    garnetApp.initialize(mOgreRoot, mOgreWindow);
     
     bool running = true;
     while(running) {
@@ -127,7 +102,7 @@ void OgreApp::run() {
         garnetApp.onTick();
         
         //headNode->rotate(Ogre::Vector3(0, 1, 0), Ogre::Radian(1));
-        headNode->translate(Ogre::Vector3(0, 0.01, 0));
+        //headNode->translate(Ogre::Vector3(0, 0.01, 0));
         
         Ogre::WindowEventUtilities::messagePump();
         
