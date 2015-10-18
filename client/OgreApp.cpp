@@ -13,6 +13,8 @@
 #include "Nugget.hpp"
 #include "Dollop.hpp"
 
+#include "GarnetApp.hpp"
+
 #include <iostream>
 
 namespace grt
@@ -101,8 +103,8 @@ void OgreApp::run() {
     Ogre::Light* light = mSmgr->createLight("Light");
     light->setPosition(20,80,50);
     
-    Dollop dollop;
-    dollop.updateMesh();
+    GarnetApp& garnetApp = GarnetApp::getSingleton();
+    garnetApp.initialize(mOgreRoot);
     
     bool running = true;
     while(running) {
@@ -111,6 +113,7 @@ void OgreApp::run() {
         while(SDL_PollEvent(&event)) {
             switch(event.type) {
                 case SDL_QUIT: {
+                    garnetApp.onClose();
                     mOgreRoot->queueEndRendering();
                     running = false;
                     break;
@@ -120,6 +123,8 @@ void OgreApp::run() {
                 }
             }
         }
+        
+        garnetApp.onTick();
         
         //headNode->rotate(Ogre::Vector3(0, 1, 0), Ogre::Radian(1));
         headNode->translate(Ogre::Vector3(0, 0.01, 0));

@@ -22,6 +22,7 @@ public:
     Ogre::Root* mOgreRoot;
     Ogre::Camera* mCam;
     Ogre::SceneManager* mSmgr;
+    
     Ogre::RenderWindow* mOgreWindow;
     SDL_Window* mSdlWindow;
 

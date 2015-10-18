@@ -8,14 +8,20 @@ GarnetApp& GarnetApp::getSingleton() {
     return instance;
 }
 
-GarnetApp::GarnetApp()
-{
+GarnetApp::GarnetApp() {
 }
 
-GarnetApp::~GarnetApp()
-{
+GarnetApp::~GarnetApp() {
 }
 
+void GarnetApp::initialize(Ogre::Root* ogreRoot) {
+    mOgreRoot = ogreRoot;
+}
+
+void GarnetApp::onClose() {
+}
+void GarnetApp::onTick() {
+}
 
 }
 
