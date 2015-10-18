@@ -20,6 +20,17 @@ public:
     Ogre::Camera* mCam;
     Ogre::SceneManager* mSmgr;
     
+    Ogre::SceneNode* mRootNode;
+    Ogre::SceneNode* mCamLocNode;
+    Ogre::SceneNode* mCamPitchNode;
+    Ogre::SceneNode* mCamYawNode;
+    Ogre::SceneNode* mCamRollNode;
+    
+    Ogre::Degree mCamPitch;
+    Ogre::Degree mCamYaw;
+    Ogre::Degree mCamRoll;
+    
+    
     void initialize(Ogre::Root* ogreRoot, Ogre::RenderWindow* ogreWindow);
     
     // User wants to close application

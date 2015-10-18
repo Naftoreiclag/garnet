@@ -65,9 +65,6 @@ void OgreApp::run() {
         }
     }
     
-    SDL_ShowCursor(SDL_FALSE);
-    SDL_SetWindowGrab(mSdlWindow, SDL_TRUE);
-    
     Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
     
@@ -78,7 +75,6 @@ void OgreApp::run() {
     
     bool running = true;
     while(running) {
-        
         SDL_Event event;
         while(SDL_PollEvent(&event)) {
             switch(event.type) {
@@ -119,7 +115,6 @@ void OgreApp::run() {
         
         float tps = tpsTimer.getElapsedTime().asSeconds();
         tpsTimer.restart();
-        
         garnetApp.onTick(tps);
         
         Ogre::WindowEventUtilities::messagePump();
